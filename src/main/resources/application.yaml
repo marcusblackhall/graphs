@@ -1,0 +1,14 @@
+lcps:
+    url: https://lcps.nu/wp-content/uploads/covid-19-datafeed.csv
+
+## PostgreSQL
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/graphs
+    username: postgres
+    password: marcus
+
+  #drop n create table again, good for testing, comment this in production
+  jpa:
+    hibernate:
+     ddl-auto: create
