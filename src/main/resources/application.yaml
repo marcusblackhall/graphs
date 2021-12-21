@@ -11,4 +11,4 @@ spring:
   #drop n create table again, good for testing, comment this in production
   jpa:
     hibernate:
-     ddl-auto: create
+     ddl-auto: update

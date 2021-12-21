@@ -1,17 +1,18 @@
 package com.iamatum.iamatumgraphs.domain;
 
-import lombok.Builder;
-import lombok.Data;
+import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
 @Data
 @Builder
+@AllArgsConstructor(access = AccessLevel.PACKAGE)
+@NoArgsConstructor(access = AccessLevel.PACKAGE)
+@Setter(value = AccessLevel.PACKAGE)
+@Getter
+@Table(indexes = @Index(columnList = "datum"))
 public class Lcps {
 
     @Id

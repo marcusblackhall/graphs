@@ -5,7 +5,7 @@ import com.iamatum.iamatumgraphs.model.LcpsData;
 import org.springframework.stereotype.Component;
 
 @Component
-public class Mapper {
+public class TestMapper {
 
     public static Lcps lcpsDataToLcps(LcpsData lcpsData){
 

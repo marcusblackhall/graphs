@@ -1,7 +1,7 @@
 package com.iamatum.iamatumgraphs.runners;
 
 import com.iamatum.iamatumgraphs.converters.ConvertCsvToList;
-import com.iamatum.iamatumgraphs.converters.Mapper;
+import com.iamatum.iamatumgraphs.converters.TestMapper;
 import com.iamatum.iamatumgraphs.domain.Lcps;
 import com.iamatum.iamatumgraphs.model.LcpsData;
 import com.iamatum.iamatumgraphs.repositories.LcpsRepository;
@@ -40,7 +40,7 @@ public class LcpsRunner implements CommandLineRunner {
                 .execute(inputStream, LcpsData.class);
 
         List<Lcps> allLcps = lcpsData.stream()
-                .map(Mapper::lcpsDataToLcps)
+                .map(TestMapper::lcpsDataToLcps)
                 .collect(Collectors.toList());
 
         lcpsRepository.saveAll(allLcps);
