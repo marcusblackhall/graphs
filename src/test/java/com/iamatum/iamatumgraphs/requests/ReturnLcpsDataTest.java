@@ -9,9 +9,11 @@ import org.springframework.core.io.buffer.DataBuffer;
 import org.springframework.core.io.buffer.DataBufferUtils;
 import org.springframework.http.client.reactive.ReactorClientHttpConnector;
 import org.springframework.web.reactive.function.client.WebClient;
+import reactor.core.Disposable;
 import reactor.core.publisher.Flux;
 import reactor.netty.http.client.HttpClient;
 
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -46,15 +48,25 @@ class ReturnLcpsDataTest {
 
         Path outPath = Paths.get("lcps.csv");
 
-        DataBufferUtils.write(dataBufferFlux, outPath, StandardOpenOption.CREATE)
-                .subscribe( unused -> {},
-                 throwable -> log.info("thrown error {}", throwable.getMessage()),
-                        () -> {
-                    countDownLatch.countDown();
-                    log.info("Retrieved all data from lcps");}
-                        );
+        Disposable retrieved_all_data_from_lcps = DataBufferUtils.write(dataBufferFlux, outPath, StandardOpenOption.CREATE)
 
-        countDownLatch.await(10, TimeUnit.SECONDS);
+                .subscribe(unused -> {
+                        },
+                        throwable -> log.info("thrown error {}", throwable.getMessage()),
+                        () -> {
+                            countDownLatch.countDown();
+                            log.info("Retrieved all data from lcps");
+                            try {
+                                long size = Files.size(outPath);
+                                log.info("No. of bytes {}",size);
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                );
+
+
+        countDownLatch.await(1, TimeUnit.SECONDS);
         assertThat(countDownLatch.getCount()).isEqualTo(0);
         assertTrue(Files.exists(outPath));
 

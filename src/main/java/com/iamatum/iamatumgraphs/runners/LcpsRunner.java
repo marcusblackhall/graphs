@@ -28,23 +28,6 @@ public class LcpsRunner implements CommandLineRunner {
     public void run(String... args) throws Exception {
 
 
-        lcpsRepository.deleteAll();
-
-        Path path = Paths.get("src", "test", "resources", "lcps.csv");
-
-
-        File file = path.toFile();
-        InputStream inputStream = new FileInputStream(file);
-
-        List<LcpsData> lcpsData = new ConvertCsvToList<LcpsData>()
-                .execute(inputStream, LcpsData.class);
-
-        List<Lcps> allLcps = lcpsData.stream()
-                .map(TestMapper::lcpsDataToLcps)
-                .collect(Collectors.toList());
-
-        lcpsRepository.saveAll(allLcps);
-
 
     }
 }

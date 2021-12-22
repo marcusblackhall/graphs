@@ -1,0 +1,15 @@
+openapi: 3.0.0
+info:
+  title: Sample API
+  description: Optional multiline or single-line description in [CommonMark](http://commonmark.org/help/) or HTML.
+  version: 0.1.9
+servers:
+  - url: http://localhost:8080
+    description: Development server
+  - url: http://staging-api.example.com
+    description: Optional server description, e.g. Internal staging server for testing
+paths:
+  /api/lcps/betweenDates:
+    get:
+      summary: Returns LCPS corona between a start and end date.
+      description: Optional extended description in CommonMark or HTML

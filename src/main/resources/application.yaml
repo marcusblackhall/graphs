@@ -12,3 +12,6 @@ spring:
   jpa:
     hibernate:
      ddl-auto: update
+
+schedule:
+  lcps: "0 10 16 * * *"
