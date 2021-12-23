@@ -66,7 +66,7 @@ class ReturnLcpsDataTest {
                 );
 
 
-        countDownLatch.await(1, TimeUnit.SECONDS);
+        countDownLatch.await(5, TimeUnit.SECONDS);
         assertThat(countDownLatch.getCount()).isEqualTo(0);
         assertTrue(Files.exists(outPath));
 
