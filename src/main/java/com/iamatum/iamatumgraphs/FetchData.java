@@ -1,10 +1,9 @@
 package com.iamatum.iamatumgraphs;
 
 import com.iamatum.iamatumgraphs.converters.ConvertCsvToList;
-import com.iamatum.iamatumgraphs.domain.Lcps;
 import com.iamatum.iamatumgraphs.mappers.LcpsMapper;
 import com.iamatum.iamatumgraphs.model.LcpsData;
-import com.iamatum.iamatumgraphs.repositories.LcpsRepository;
+import com.iamatum.iamatumgraphs.services.LcpsService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -20,7 +19,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Component
 @Slf4j
@@ -31,7 +29,7 @@ public class FetchData {
     private String lcpsUrl;
 
     private final ConvertCsvToList<LcpsData> convertCsvToList;
-    private final LcpsRepository lcpsRepository;
+    private final LcpsService lcpsService;
     private final LcpsMapper lcpsMapper;
     private final WebClient webClient;
 
@@ -53,14 +51,12 @@ public class FetchData {
                             try (InputStream inputStream = Files.newInputStream(tempFile, StandardOpenOption.CREATE)) {
                                 List<LcpsData> lcpsData = convertCsvDataToLcpsData(inputStream);
                                 log.info("No. of lcps records {}", lcpsData.size());
-                                lcpsRepository.deleteAll();
-                                List<Lcps> lcpsList = lcpsData.stream().map(lcpsMapper::lcpsDataToLcps).collect(Collectors.toList());
-                                lcpsRepository.saveAll(lcpsList);
+                                lcpsService.loadLcpsData(lcpsData);
                             } catch (IOException e) {
                                 log.error("Could not load data {}", e.getMessage());
                             }
                         }
-                );
+                ).dispose();
 
     }
 
