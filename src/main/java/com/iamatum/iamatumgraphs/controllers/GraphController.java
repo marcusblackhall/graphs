@@ -8,10 +8,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class GraphController {
 
-    @GetMapping("/")
-    public String homePage(Model model){
-
-        model.addAttribute("heroku","Heroku");
+    @GetMapping("/home")
+    public String showCards(Model model) {
+        model.addAttribute("left", "card");
         return "index";
     }
 }
