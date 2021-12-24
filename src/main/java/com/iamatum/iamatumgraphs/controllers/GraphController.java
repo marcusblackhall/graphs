@@ -18,4 +18,11 @@ public class GraphController {
         model.addAttribute("left", "card");
         return "index";
     }
+
+    @GetMapping("/lcps")
+    public String showLcpsData(Model model) {
+        model.addAttribute("left", "lcps");
+        return "index";
+    }
+
 }

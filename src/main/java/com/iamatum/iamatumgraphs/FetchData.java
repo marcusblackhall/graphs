@@ -34,7 +34,7 @@ public class FetchData {
     private final WebClient webClient;
 
     public void retrieveLcpsFigures() throws IOException {
-
+        log.info("Retrieving Lcps figures ..");
         Flux<DataBuffer> dataBufferFlux = webClient.get()
                 .uri(lcpsUrl)
                 .retrieve()
@@ -56,7 +56,7 @@ public class FetchData {
                                 log.error("Could not load data {}", e.getMessage());
                             }
                         }
-                ).dispose();
+                );
 
     }
 

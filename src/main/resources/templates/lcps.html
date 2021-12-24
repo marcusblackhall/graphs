@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <title>Covid positive cases graph</title>
+
+</head>
+
+<body>
+
+<div th:fragment="lcps">
+    <div class="card">
+
+        <h5 class="card-header  bg-info">LCPS Covid data</h5>
+
+        <div class="card-body">
+
+            <canvas id="lcpsChartId" class="w-100"></canvas>
+        </div>
+        <div class="card-footer bg-info">
+            <label class="text-white" for="selPeriod">Select period</label>
+            <select class="form-select w-25" id="selPeriod">
+                <option value="ALL">All data</option>
+                <option value="LAST_1_MONTH">Last month</option>
+                <option value="LAST_2_MONTHS">Last 2 months</option>
+                <option value="LAST_4_MONTHS">Last 4 months</option>
+                <option value="LAST_6_MONTHS">Last 6 months</option>
+            </select>
+        </div>
+    </div>
+    <script src="js/chart.min.js"></script>
+    <script src="js/lcps.js"></script>
+</div>
+
+
+</body>
+</html>
