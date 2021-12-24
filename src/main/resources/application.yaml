@@ -14,4 +14,4 @@ spring:
      ddl-auto: update
 
 schedule:
-  lcps: "0 30 45 * * *"
+  lcps: "0 45 15 * * *"
