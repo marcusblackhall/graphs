@@ -19,14 +19,8 @@
             <canvas id="lcpsChartId" class="w-100"></canvas>
         </div>
         <div class="card-footer bg-info">
-            <label class="text-white" for="selPeriod">Select period</label>
-            <select class="form-select w-25" id="selPeriod">
-                <option value="ALL">All data</option>
-                <option value="LAST_1_MONTH">Last month</option>
-                <option value="LAST_2_MONTHS">Last 2 months</option>
-                <option value="LAST_4_MONTHS">Last 4 months</option>
-                <option value="LAST_6_MONTHS">Last 6 months</option>
-            </select>
+       <label for="startDatePicker">From date</label>     <input id="startDatePicker" data-provide="datepicker">
+            <label for="endDatePicker">End date</label>      <input id="endDatePicker" data-provide="datepicker">
         </div>
     </div>
     <script src="js/chart.min.js"></script>

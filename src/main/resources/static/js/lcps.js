@@ -1,68 +1,33 @@
+var myChart;
 $(document).ready(function(){
 console.log("fetching data for lcps data");
-var myChart;
- $.ajax( {
-        "url": '/api/v1/lcps/betweenDates',
-        type: 'GET',
-        dataType: "json",
-        data: {
-            'startDate' : "2021-01-01",
-            'endDate' : "2021-12-20"
-        },
-        "contentType": "application/json",
-        }
-    ).fail(function( jqXHR, textStatus){
-        console.log("Ajax error call" + textStatus);
-    })
-    .done( function(data){
 
-         var icData = [];
-         var clinicData = [];
-         var chartlabels = [];
-         var allData = data;
-         for (var i in allData){
-          icData.push(allData[i].icBedsNl);
-          clinicData.push(allData[i].kliniekBedsNl);
-          chartlabels.push( allData[i].datum);
-         }
-         myChart = renderChart(chartlabels,icData,clinicData);
-    });
+$('#startDatePicker').datepicker(
 
-    $("#selPeriod").on("change",function(){
-      console.log("selected " + $(this).val());
-      var period = $(this).val();
-       $.ajax( {
-        "url": '/selectTestsByPeriod',
-        type: 'POST',
-        data: JSON.stringify({"period" : period}),
-        dataType: 'json',
-        "contentType": "application/json"
-        }
-    ).fail(function( jqXHR, textStatus){
-        console.log("Ajax error call" + textStatus);
-    })
-    .done( function(data){
+ { 'dateFormat' : 'yy-mm-dd',
+  changeMonth: true,
+    }
+ );
 
-         var icData = [];
-         var clinicData = [];
-         var chartlabels = [];
-         var allData = data;
-         for (var i in allData){
-          icData.push(allData[i].noPositive);
-          chartlabels.push( allData[i].dateReport.substring(0,10));
-         }
+ $('#endDatePicker').datepicker(
+  { 'dateFormat' : 'yy-mm-dd',
+    'defaultDate' : 'today' }
+  );
+console.log("date is " + $("#startdatePicker").val());
 
+$( "#startDatePicker" ).datepicker( "setDate",  -60 );
+$( "#endDatePicker" ).datepicker( "setDate",  'today' );
 
-myChart.data.labels = chartlabels;
-myChart.data.datasets[0].data = chartdata;
+  drawChart();
 
+    $("#startDatePicker").on("change",function(){
+      drawChart(true);
+      });
 
-          myChart.update();
+      $("#endDatePicker").on("change",function(){
+            drawChart(true);
+            });
 
-
-    });
-
-    });
 });
 
 function removeData(chart) {
@@ -74,16 +39,17 @@ function removeData(chart) {
    chart.update();
 }
 
-function renderChart(labels,icData,clinicData){
+function renderConfig(chartlabels,icData,clinicData){
 var ctx = document.getElementById('lcpsChartId');
 
-const config = {
+var config = {
   type: 'line',
    data: {
-            labels: labels,
+            labels: chartlabels,
             datasets: [{
                 label: 'IC Covid',
                 data: icData,
+                borderWidth: 0.5,
                 borderColor: "red",
                 backgroundColor: 'rgba(255,102,102,1.0)',
                 fill: true,
@@ -103,19 +69,19 @@ const config = {
         options: {
             responsive: true,
             maintainAspectRatio: false,
-            scales: {
-                xAxes: [{
-                type: "string",
-                ticks: {
-                         major: true,
-                         display: true,
-                         value: 90,
-                         autoSkip: true,
-                         maxTicksLimit: 30
-
-                    }
-                }]
-            },
+//            scales: {
+//                xAxis: [{
+//                type: "string",
+//                ticks: {
+//                         major: true,
+//                         display: true,
+//                         value: 90,
+//                         autoSkip: true,
+//                         maxTicksLimit: 10
+//
+//                    }
+//                }]
+//            },
             plugins : {
                     title: {
                                     display: true,
@@ -132,6 +98,50 @@ const config = {
 
 };
 
-return new Chart(ctx,config);
+return config;;
+
+}
+
+function drawChart(updateChart){
+$.ajax( {
+        "url": '/api/v1/lcps/betweenDates',
+        type: 'GET',
+        dataType: "json",
+        data: {
+            'startDate' : $("#startDatePicker").val()  ,
+            'endDate' : $("#endDatePicker").val()
+        },
+        "contentType": "application/json",
+        }
+    ).fail(function( jqXHR, textStatus){
+        console.log("Ajax error call" + textStatus);
+    })
+    .done( function(data){
+
+         var icData = [];
+         var clinicData = [];
+         var chartlabels = [];
+         var allData = data;
+         for (var i in allData){
+          icData.push(allData[i].icBedsNl);
+          clinicData.push(allData[i].kliniekBedsNl);
+          chartlabels.push( allData[i].datum);
+         }
+
+
+         if (updateChart) {
+         // myChart.config = config;
+          myChart.data.datasets[0].data = icData;
+          myChart.data.datasets[1].data = clinicData;
+          myChart.data.labels = chartlabels;
+
+          console.log(myChart.config.data);
+          myChart.update();
+         } else {
+            var ctx = document.getElementById("lcpsChartId");
+             var config = renderConfig(chartlabels,icData,clinicData);
+            myChart = new Chart(ctx,config);
+         }
+    });
 
 }
