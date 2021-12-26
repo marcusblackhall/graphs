@@ -139,7 +139,7 @@ $.ajax( {
           myChart.update();
          } else {
             var ctx = document.getElementById("lcpsChartId");
-             var config = renderConfig(chartlabels,icData,clinicData);
+            var config = renderConfig(chartlabels,icData,clinicData);
             myChart = new Chart(ctx,config);
          }
     });
