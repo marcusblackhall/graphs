@@ -9,6 +9,9 @@ lcps:
   url: https://lcps.nu/wp-content/uploads/covid-19-datafeed.csv
 
 schedule:
-  lcps: "0 46 15 * * *"
+  lcps:
+    url: https://lcps.nu/wp-content/uploads/covid-19-datafeed.csv
+    name: "Load LCPS data"
+    cron: "0 00 16 * * *"
 
 

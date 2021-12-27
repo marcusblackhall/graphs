@@ -1,5 +1,4 @@
-lcps:
-    url: https://lcps.nu/wp-content/uploads/covid-19-datafeed.csv
+
 
 ## PostgreSQL
 spring:
@@ -14,4 +13,7 @@ spring:
      ddl-auto: update
 
 schedule:
-  lcps: "0 45 15 * * *"
+  lcps:
+    url: https://lcps.nu/wp-content/uploads/covid-19-datafeed.csv
+    name: "Load LCPS data"
+    cron: "0 45 16 * * *"

@@ -1,9 +1,11 @@
 package com.iamatum.iamatumgraphs;
 
 import com.iamatum.iamatumgraphs.converters.ConvertCsvToList;
+import com.iamatum.iamatumgraphs.domain.ScheduleLog;
 import com.iamatum.iamatumgraphs.mappers.LcpsMapper;
 import com.iamatum.iamatumgraphs.model.LcpsData;
 import com.iamatum.iamatumgraphs.services.LcpsService;
+import com.iamatum.iamatumgraphs.transactions.ScheduleLogTransactions;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -25,16 +27,20 @@ import java.util.List;
 @RequiredArgsConstructor
 public class FetchData {
 
-    @Value("${lcps.url}")
+    @Value("${schedule.lcps.url}")
     private String lcpsUrl;
 
     private final ConvertCsvToList<LcpsData> convertCsvToList;
     private final LcpsService lcpsService;
     private final LcpsMapper lcpsMapper;
     private final WebClient webClient;
+    private final ScheduleLogTransactions scheduleLogTransactions;
 
-    public void retrieveLcpsFigures() throws IOException {
-        log.info("Retrieving Lcps figures ..");
+    public void retrieveLcpsFigures(String name) throws IOException {
+        log.info("Retrieving data for {}", name);
+
+        ScheduleLog scheduleLog = scheduleLogTransactions.saveScheduleLog(name);
+
         Flux<DataBuffer> dataBufferFlux = webClient.get()
                 .uri(lcpsUrl)
                 .retrieve()
@@ -51,8 +57,10 @@ public class FetchData {
                             try (InputStream inputStream = Files.newInputStream(tempFile, StandardOpenOption.CREATE)) {
                                 List<LcpsData> lcpsData = convertCsvDataToLcpsData(inputStream);
                                 log.info("No. of lcps records {}", lcpsData.size());
-                                lcpsService.loadLcpsData(lcpsData);
+                                int noRecords = lcpsService.loadLcpsData(lcpsData);
+                                scheduleLogTransactions.updateSuccess(scheduleLog.getUuid(), String.format("No. loaded %s", noRecords));
                             } catch (IOException e) {
+                                scheduleLogTransactions.updateError(scheduleLog.getUuid());
                                 log.error("Could not load data {}", e.getMessage());
                             }
                         }
@@ -65,4 +73,5 @@ public class FetchData {
         return convertCsvToList.execute(inputStream, LcpsData.class);
 
     }
+
 }

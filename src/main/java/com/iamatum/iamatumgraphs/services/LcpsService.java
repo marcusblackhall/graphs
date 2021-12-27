@@ -29,10 +29,11 @@ public class LcpsService {
 
     }
 
-    public void loadLcpsData(List<LcpsData> lcpsData){
+    public int loadLcpsData(List<LcpsData> lcpsData){
         lcpsRepository.deleteAll();
         List<Lcps> lcpsList = lcpsData.stream().map(lcpsMapper::lcpsDataToLcps).collect(Collectors.toList());
         lcpsRepository.saveAll(lcpsList);
+        return lcpsList.size();
     }
 
 }
