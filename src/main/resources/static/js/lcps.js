@@ -51,7 +51,7 @@ var config = {
                 data: icData,
                 borderWidth: 0.5,
                 borderColor: "red",
-                backgroundColor: 'rgba(255,102,102,1.0)',
+                backgroundColor: 'rgba(255,204,204,1.0)',
                 fill: true,
                 tension: 0.1
             },
@@ -59,7 +59,7 @@ var config = {
                             label: 'Clinic Covid',
                             data: clinicData,
                             borderColor: "green",
-                            backgroundColor: "lightGreen",
+                            backgroundColor: 'rgba(204,229,255,1.0)',
                             fill: true,
                             tension: 0.1
                         }

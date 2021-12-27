@@ -12,15 +12,27 @@
 <div th:fragment="lcps">
     <div class="card">
 
-        <h5 class="card-header  bg-info">LCPS Covid data</h5>
+        <h5 class="card-header  bg-primary">LCPS Covid data</h5>
 
-        <div class="card-body">
+        <div style="min-height:500px" class="card-body">
 
             <canvas id="lcpsChartId" class="w-100"></canvas>
         </div>
-        <div class="card-footer bg-info">
-       <label for="startDatePicker">From date</label>     <input id="startDatePicker" data-provide="datepicker">
-            <label for="endDatePicker">End date</label>      <input id="endDatePicker" data-provide="datepicker">
+        <div class="card-footer bg-primary">
+            <div class="row">
+                <div class="col-sm">
+                    <label class="label label-default" for="startDatePicker">From date</label>
+                </div>
+                <div class="col-sm">
+                    <input id="startDatePicker" data-provide="datepicker">
+                </div>
+                <div class="col-sm">
+                    <label class="label label-default" for="endDatePicker">End date</label>
+                </div>
+                <div class="col-sm">
+                    <input id="endDatePicker" data-provide="datepicker">
+                </div>
+            </div>
         </div>
     </div>
     <script src="js/chart.min.js"></script>

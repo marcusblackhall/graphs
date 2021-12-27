@@ -28,9 +28,7 @@
   --bs-gray-700: #495057;
   --bs-gray-800: #343a40;
   --bs-gray-900: #212529;
-  --bs-primary: #0077d9;
   --bs-danger: #ff4136;
-  --bs-primary-rgb: 0, 119, 217;
   --bs-danger-rgb: 255, 65, 54;
   --bs-white-rgb: 255, 255, 255;
   --bs-black-rgb: 0, 0, 0;
@@ -2914,36 +2912,6 @@ textarea.form-control-lg {
   opacity: 0.65;
 }
 
-.btn-primary {
-  color: #fff;
-  background-color: #0077d9;
-  border-color: #0077d9;
-}
-.btn-primary:hover {
-  color: #fff;
-  background-color: #0065b8;
-  border-color: #005fae;
-}
-.btn-check:focus + .btn-primary, .btn-primary:focus {
-  color: #fff;
-  background-color: #0065b8;
-  border-color: #005fae;
-  box-shadow: 0 0 0 0.25rem rgba(38, 139, 223, 0.5);
-}
-.btn-check:checked + .btn-primary, .btn-check:active + .btn-primary, .btn-primary:active, .btn-primary.active, .show > .btn-primary.dropdown-toggle {
-  color: #fff;
-  background-color: #005fae;
-  border-color: #0059a3;
-}
-.btn-check:checked + .btn-primary:focus, .btn-check:active + .btn-primary:focus, .btn-primary:active:focus, .btn-primary.active:focus, .show > .btn-primary.dropdown-toggle:focus {
-  box-shadow: 0 0 0 0.25rem rgba(38, 139, 223, 0.5);
-}
-.btn-primary:disabled, .btn-primary.disabled {
-  color: #fff;
-  background-color: #0077d9;
-  border-color: #0077d9;
-}
-
 .btn-danger {
   color: #000;
   background-color: #ff4136;
@@ -2972,31 +2940,6 @@ textarea.form-control-lg {
   color: #000;
   background-color: #ff4136;
   border-color: #ff4136;
-}
-
-.btn-outline-primary {
-  color: #0077d9;
-  border-color: #0077d9;
-}
-.btn-outline-primary:hover {
-  color: #fff;
-  background-color: #0077d9;
-  border-color: #0077d9;
-}
-.btn-check:focus + .btn-outline-primary, .btn-outline-primary:focus {
-  box-shadow: 0 0 0 0.25rem rgba(0, 119, 217, 0.5);
-}
-.btn-check:checked + .btn-outline-primary, .btn-check:active + .btn-outline-primary, .btn-outline-primary:active, .btn-outline-primary.active, .btn-outline-primary.dropdown-toggle.show {
-  color: #fff;
-  background-color: #0077d9;
-  border-color: #0077d9;
-}
-.btn-check:checked + .btn-outline-primary:focus, .btn-check:active + .btn-outline-primary:focus, .btn-outline-primary:active:focus, .btn-outline-primary.active:focus, .btn-outline-primary.dropdown-toggle.show:focus {
-  box-shadow: 0 0 0 0.25rem rgba(0, 119, 217, 0.5);
-}
-.btn-outline-primary:disabled, .btn-outline-primary.disabled {
-  color: #0077d9;
-  background-color: transparent;
 }
 
 .btn-outline-danger {
@@ -4487,15 +4430,6 @@ textarea.form-control-lg {
   padding: 1.25rem 1rem;
 }
 
-.alert-primary {
-  color: #004782;
-  background-color: #cce4f7;
-  border-color: #b3d6f4;
-}
-.alert-primary .alert-link {
-  color: #003968;
-}
-
 .alert-danger {
   color: #992720;
   background-color: #ffd9d7;
@@ -4770,20 +4704,6 @@ textarea.form-control-lg {
 }
 .list-group-flush > .list-group-item:last-child {
   border-bottom-width: 0;
-}
-
-.list-group-item-primary {
-  color: #004782;
-  background-color: #cce4f7;
-}
-.list-group-item-primary.list-group-item-action:hover, .list-group-item-primary.list-group-item-action:focus {
-  color: #004782;
-  background-color: #b8cdde;
-}
-.list-group-item-primary.list-group-item-action.active {
-  color: #fff;
-  background-color: #004782;
-  border-color: #004782;
 }
 
 .list-group-item-danger {
@@ -5799,13 +5719,6 @@ textarea.form-control-lg {
   content: "";
 }
 
-.link-primary {
-  color: #0077d9;
-}
-.link-primary:hover, .link-primary:focus {
-  color: #005fae;
-}
-
 .link-danger {
   color: #ff4136;
 }
@@ -6201,10 +6114,6 @@ textarea.form-control-lg {
 
 .border-start-0 {
   border-left: 0 !important;
-}
-
-.border-primary {
-  border-color: #0077d9 !important;
 }
 
 .border-danger {
@@ -7008,11 +6917,6 @@ textarea.form-control-lg {
 }
 
 /* rtl:end:remove */
-.text-primary {
-  --bs-text-opacity: 1;
-  color: rgba(var(--bs-primary-rgb), var(--bs-text-opacity)) !important;
-}
-
 .text-danger {
   --bs-text-opacity: 1;
   color: rgba(var(--bs-danger-rgb), var(--bs-text-opacity)) !important;
@@ -7067,11 +6971,6 @@ textarea.form-control-lg {
 
 .text-opacity-100 {
   --bs-text-opacity: 1;
-}
-
-.bg-primary {
-  --bs-bg-opacity: 1;
-  background-color: rgba(var(--bs-primary-rgb), var(--bs-bg-opacity)) !important;
 }
 
 .bg-danger {
