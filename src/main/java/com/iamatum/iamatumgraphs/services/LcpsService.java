@@ -43,13 +43,8 @@ public class LcpsService {
 
     public ResultPage lcpsDataTables(TablePage tablePage){
 
-
         Integer pageSize = tablePage.getLength();
-        log.info("Processing deaths");
-        log.info("Order is {}", tablePage.getOrder());
-
         Sort orders = translatePageOrder(tablePage);
-
 
         var of = PageRequest.of(calculatePage(tablePage), pageSize, orders);
         Page<Lcps> all = lcpsRepository.findAll(of);

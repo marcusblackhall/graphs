@@ -45,8 +45,6 @@ public class LcpsRestController {
 
     @PostMapping( "/lcps/datatables")
     public ResponseEntity<ResultPage> createLcpsDatatableData(@RequestBody TablePage tablePage){
-
-        log.info("retrieving lcps date {}",tablePage.getStart());
         ResultPage resultPage = lcpsService.lcpsDataTables(tablePage);
         return  ResponseEntity.ok(resultPage);
     }

@@ -1,5 +1,4 @@
 $(document).ready(function(){
-console.log("setting up lcps table");
 
   $('#lcpsTableId').dataTable( {
     "columns": [
@@ -19,16 +18,13 @@ console.log("setting up lcps table");
          "type": 'POST',
          "dataType": "json",
          "contentType": "application/json",
-          "data": function(d) {
-                 var x = JSON.stringify(d);
-                 console.log("trying with " + x);
-                        return x;
+         "data": function(d) {
+                  return JSON.stringify(d);
                  }
 
         },
 
     } );
-
 
 });
 

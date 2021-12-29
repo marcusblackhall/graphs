@@ -16,4 +16,4 @@ schedule:
   lcps:
     url: https://lcps.nu/wp-content/uploads/covid-19-datafeed.csv
     name: "Load LCPS data"
-    cron: "0 45 16 * * *"
+    cron: "0 30 15 * * *"
