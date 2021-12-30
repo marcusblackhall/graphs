@@ -2,11 +2,17 @@ const gulp = require('gulp');
 //const sass = require('gulp-sass');
 const sass = require('gulp-sass')(require('sass'));
 const {series} = require('gulp');
+const cleanCSS = require("gulp-clean-css");
+
 
 //compile scss into css
 function style() {
     return gulp.src('custom/custom.scss')
     .pipe(sass().on('error',sass.logError))
+    .pipe(cleanCSS({debug: true},(details) => {
+                                        console.log(`${details.name}: ${details.stats.originalSize}`);
+                                        console.log(`${details.name}: ${details.stats.minifiedSize}`);
+                                      }))
     .pipe(gulp.dest('src/main/resources/static/css'));
 
 }
