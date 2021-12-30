@@ -1,8 +1,8 @@
 const gulp = require('gulp');
-//const sass = require('gulp-sass');
 const sass = require('gulp-sass')(require('sass'));
 const {series} = require('gulp');
 const cleanCSS = require("gulp-clean-css");
+const minify = require("gulp-minify");
 
 
 //compile scss into css
@@ -14,6 +14,13 @@ function style() {
                                         console.log(`${details.name}: ${details.stats.minifiedSize}`);
                                       }))
     .pipe(gulp.dest('src/main/resources/static/css'));
+
+}
+
+function minifyJs(){
+ return gulp.src('src/main/resources/static/js/lcps.js', { allowEmpty: true })
+         .pipe(minify({noSource: true}))
+         .pipe(gulp.dest('src/main/resources/static/js'));
 
 }
 
@@ -61,4 +68,5 @@ exports.copychartjs = copychartjs;
 exports.copyjquery = copyjquery;
 exports.copyjqueryui = copyjqueryui;
 exports.style = style;
+exports.minifyJs = minifyJs;
 exports.default = series(style,copybootstrap,copyjquery,copychartjs);

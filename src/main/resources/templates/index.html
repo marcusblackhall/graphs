@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta name="description" content="Coding LCPS Corona">
@@ -10,12 +10,14 @@
     <link rel="stylesheet" th:href="@{/css/custom.css}" />
     <link th:href="@{/css/jquery-ui.min.css}" rel="stylesheet"/>
     <link th:href="@{/css/datatables.min.css}" rel="stylesheet"/>
-    <script src="js/jquery.min.js"></script>
-    <script src="js/jquery-ui.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+
 
 </head>
 <body>
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery-ui.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
 <div class="container">
     <div class="row" th:insert="fragments/header :: header">
 
@@ -28,7 +30,6 @@
 
     <div th:insert="fragments/footer :: footer"></div>
 </div>
-
 
 </body>
 </html>
