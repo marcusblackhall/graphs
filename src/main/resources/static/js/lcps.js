@@ -15,9 +15,8 @@ $(document).ready(function () {
       'defaultDate': 'today'
     }
   );
-  console.log("date is " + $("#startdatePicker").val());
 
-  $("#startDatePicker").datepicker("setDate", -60);
+  $("#startDatePicker").datepicker("setDate", -365);
   $("#endDatePicker").datepicker("setDate", 'today');
 
   drawChart();

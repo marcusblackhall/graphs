@@ -1,6 +1,8 @@
 $(document).ready(function(){
 
   $('#lcpsTableId').dataTable( {
+   "sDom" : "lrtip",
+   "order" : [["0","desc"]],
     "columns": [
               { "data": "datum" },
               { "data": "icBedsNl" },
