@@ -93,7 +93,7 @@ function renderConfig(chartlabels, icData, clinicData) {
 
 function drawChart(updateChart) {
   $.ajax({
-    "url": '/api/v1/lcps/betweenDates',
+    "url": '/api/v2/lcps/betweenDates',
     type: 'GET',
     dataType: "json",
     data: {
