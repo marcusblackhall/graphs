@@ -1,6 +1,7 @@
 $(document).ready(function(){
 
   $('#lcpsTableId').dataTable( {
+   "responsive" : true,
    "sDom" : "lrtip",
    "order" : [["0","desc"]],
     "columns": [

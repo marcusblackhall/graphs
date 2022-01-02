@@ -16,10 +16,10 @@ public class ConvertToLocalDate extends AbstractBeanField {
     @Override
     protected Object convert(String s) throws CsvDataTypeMismatchException, CsvConstraintViolationException {
         if (s != null) {
-            if (s.matches("^.........$")){
+            if (s.matches("^.........$")) {
                 return LocalDate.parse(s, monthFormatter);
             }
-            if (s.matches("^........$")){
+            if (s.matches("^........$")) {
                 return LocalDate.parse(s, dMFormatter);
             }
             return LocalDate.parse(s, formatter);

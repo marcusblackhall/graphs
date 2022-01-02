@@ -43,10 +43,10 @@ public class LcpsRestController {
 
     }
 
-    @PostMapping( "/lcps/datatables")
-    public ResponseEntity<ResultPage> createLcpsDatatableData(@RequestBody TablePage tablePage){
+    @PostMapping("/lcps/datatables")
+    public ResponseEntity<ResultPage> createLcpsDatatableData(@RequestBody TablePage tablePage) {
         ResultPage resultPage = lcpsService.lcpsDataTables(tablePage);
-        return  ResponseEntity.ok(resultPage);
+        return ResponseEntity.ok(resultPage);
     }
 
 }

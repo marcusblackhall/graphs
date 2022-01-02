@@ -7,9 +7,9 @@ import org.springframework.stereotype.Component;
 @Component
 public class TestMapper {
 
-    public static Lcps lcpsDataToLcps(LcpsData lcpsData){
+    public static Lcps lcpsDataToLcps(LcpsData lcpsData) {
 
-        if (lcpsData == null){
+        if (lcpsData == null) {
             return null;
         }
 
@@ -22,7 +22,6 @@ public class TestMapper {
                 .icBedsNieuwNl(lcpsData.getIcBedsNieuwNl())
                 .kliniekNieuwNl(lcpsData.getKliniekNieuwNl())
                 .build();
-
 
 
     }

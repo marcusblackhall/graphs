@@ -53,6 +53,12 @@ function copydatatables() {
 
 }
 
+function copyresponsive() {
+    return gulp.src('node_modules/datatables.net-responsive-dt/js/responsive.dataTables.min.js')
+    .pipe(gulp.dest('src/main/resources/static/js'));
+
+}
+
 
 function copychartjs() {
     return gulp.src('node_modules/chart.js/dist/chart.min.js')
@@ -62,6 +68,7 @@ function copychartjs() {
 
 
 exports.copydatatables = copydatatables;
+exports.copyresponsive = copyresponsive;
 exports.copyjqueryuicss = copyjqueryuicss;
 exports.copybootstrap = copybootstrap;
 exports.copychartjs = copychartjs;

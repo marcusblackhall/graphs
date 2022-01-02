@@ -20,8 +20,12 @@ public class RouterConfig {
                 .GET("/api/v2/lcps/betweenDates",
                         accept(MediaType.APPLICATION_JSON),
                         appHandler::lcpsBetweenDates
-                ).build();
-
+                )
+                .GET("/home", appHandler::homepage)
+                .GET("/lcps", appHandler::lcpspage)
+                .GET("/lcpstable", appHandler::lcpstable)
+                .GET("/", appHandler::homepage)
+                .build();
 
     }
 

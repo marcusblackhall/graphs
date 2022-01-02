@@ -22,13 +22,13 @@ public class LcpsValidator implements Validator {
 
         BetweenDatesParameters betweenDatesParameters = (BetweenDatesParameters) target;
 
-        boolean matches =  validDate(betweenDatesParameters.getStartDate());
+        boolean matches = validDate(betweenDatesParameters.getStartDate());
         if (!matches) {
-              errors.reject("startDate","Must be in format yyyy-MM-dd");
+            errors.reject("startDate", "Must be in format yyyy-MM-dd");
         }
         boolean endDateValid = validDate(betweenDatesParameters.getEnddate());
         if (!endDateValid) {
-            errors.reject("endDate","Must be in format yyyy-MM-dd");
+            errors.reject("endDate", "Must be in format yyyy-MM-dd");
         }
 
     }
@@ -36,7 +36,7 @@ public class LcpsValidator implements Validator {
     private boolean validDate(String enddate) {
         try {
             dateTimeFormatter.parse(enddate);
-        } catch(DateTimeParseException e){
+        } catch (DateTimeParseException e) {
             return false;
         }
         return true;

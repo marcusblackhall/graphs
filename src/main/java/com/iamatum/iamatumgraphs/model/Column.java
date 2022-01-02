@@ -14,5 +14,5 @@ public class Column {
     private String name;
     private Boolean searchable;
     private Boolean orderable;
-    private Search  search;
+    private Search search;
 }

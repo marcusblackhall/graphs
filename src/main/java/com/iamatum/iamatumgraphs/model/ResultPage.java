@@ -3,7 +3,7 @@ package com.iamatum.iamatumgraphs.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ResultPage <T> {
+public class ResultPage<T> {
     public Integer getDraw() {
         return draw;
     }

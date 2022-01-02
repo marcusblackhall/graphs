@@ -9,5 +9,6 @@ import java.util.UUID;
 public interface ScheduleLogRepository extends JpaRepository<ScheduleLog, UUID> {
 
     public ScheduleLog findByUuid(UUID uuid);
+
     public List<ScheduleLog> findByOrderByStartTime();
 }

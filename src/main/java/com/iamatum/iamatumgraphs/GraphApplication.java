@@ -8,8 +8,8 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @EnableScheduling
 public class GraphApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(GraphApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(GraphApplication.class, args);
+    }
 
 }

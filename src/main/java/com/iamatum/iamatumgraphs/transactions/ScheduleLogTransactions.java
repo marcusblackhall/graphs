@@ -19,7 +19,7 @@ public class ScheduleLogTransactions {
     private final ScheduleLogRepository scheduleLogRepository;
 
     @Transactional(propagation = Propagation.REQUIRES_NEW)
-    public ScheduleLog saveScheduleLog(String name){
+    public ScheduleLog saveScheduleLog(String name) {
 
         ScheduleLog scheduleLog = ScheduleLog.builder()
                 .name(name)
@@ -36,7 +36,7 @@ public class ScheduleLogTransactions {
         byUUid.setEndTime(LocalDateTime.now());
     }
 
-    public void updateSuccess(UUID uuid,String msg) {
+    public void updateSuccess(UUID uuid, String msg) {
 
         ScheduleLog byUUid = scheduleLogRepository.findByUuid(uuid);
         byUUid.setScheduleStatus(ScheduleStatus.SUCCESS);
