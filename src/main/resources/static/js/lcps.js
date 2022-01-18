@@ -1,6 +1,8 @@
 var myChart;
 $(document).ready(function () {
 
+$('#errorMessage').hide();
+
   $('#startDatePicker').datepicker(
 
     {
@@ -103,10 +105,11 @@ function drawChart(updateChart) {
     "contentType": "application/json",
   }
   ).fail(function (jqXHR, textStatus) {
+   $('#errorMessage').show();
     console.log("Ajax error call" + textStatus);
   })
     .done(function (data) {
-
+ $('#errorMessage').hide();
       var icData = [];
       var clinicData = [];
       var chartlabels = [];

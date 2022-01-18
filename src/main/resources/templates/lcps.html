@@ -8,6 +8,12 @@
             <canvas id="lcpsChartId" class="w-100"></canvas>
         </div>
         <div class="card-footer bg-secondary">
+            <div id="errorMessage" class="row" >
+                <div class="col-sm alert alert-danger alert-dismissible show fade out" role="alert">
+                    <strong>Invalid Date entered</strong> Enter in format YYYY-MM-DD.
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            </div>
             <div class="row">
                 <div class="col-sm">
                     <label class="label label-default" for="startDatePicker">From date</label>
